@@ -37,3 +37,19 @@ def parse_log_metadata(raw):
         k, v = pair.split(': ')
         d[k.lower()] = True if v == 'True' else False if v == 'False' else v
     return d
+
+
+def write_log(messages):
+    for message in messages:
+        yield write_log_message(message)
+
+
+def write_log_message(message):
+    base = '{timestamp:.2f}: {event}'.format_map(message)
+    if message['metadata']:
+        base += ' - ' + write_log_metadata(message['metadata'])
+    return base
+
+
+def write_log_metadata(metadata):
+    return '. '.join([f'{k.capitalize()}: {v}' for k, v in metadata.items()])
