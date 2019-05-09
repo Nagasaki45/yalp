@@ -45,7 +45,7 @@ def write_log(messages):
 
 
 def write_log_message(message):
-    base = '{timestamp:.2f}: {event}'.format_map(message)
+    base = '{timestamp:.3f}: {event}'.format_map(message)
     if message['metadata']:
         base += ' - ' + write_log_metadata(message['metadata'])
     return base
