@@ -52,4 +52,4 @@ def write_log_message(message):
 
 
 def write_log_metadata(metadata):
-    return '. '.join([f'{k.capitalize()}: {v}' for k, v in metadata.items()])
+    return '. '.join([f'{k}: {v}' for k, v in metadata.items()])
