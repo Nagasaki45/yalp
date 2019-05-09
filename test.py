@@ -12,3 +12,7 @@ _result = yalp.parse_log_message('5.041295: Partner automation started - Model: 
 _expected = {'timestamp': 5.041295, 'event': 'Partner automation started',
              'metadata': {'model': 'mimicry', 'speaker': False}}
 assert _result == _expected, (_result, _expected)
+
+_result = list(yalp.parse_log(['3.123456: Nodding\n']))
+_expected = [{'timestamp': 3.123456, 'event': 'Nodding', 'metadata': {}}]
+assert _result == _expected, (_result, _expected)

@@ -14,10 +14,11 @@ LOG_MESSAGE_PATTERN = re.compile(
 
 def parse_log(lines):
     for line in lines:
+        line = line.strip()
         if line:
             yield parse_log_message(line)
 
-            
+
 def parse_log_message(message):
     match = LOG_MESSAGE_PATTERN.match(message)
     metadata = parse_log_metadata(match.group('metadata'))
